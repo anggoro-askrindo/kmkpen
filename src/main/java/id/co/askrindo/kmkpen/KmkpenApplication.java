@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KmkpenApplication {
 
 	public static void main(String[] args) {
-		System.out.println("##Test Commit");
 		SpringApplication.run(KmkpenApplication.class, args);
 	}
 
