@@ -1,9 +1,7 @@
 package id.co.askrindo.kmkpen.repository.postgreSql;
 
 import id.co.askrindo.kmkpen.model.postgreSql.JurnalProduksiKlaim;
-import id.co.askrindo.kmkpen.model.postgreSql.dto.IJurnalProduksiIjpDTO;
 import id.co.askrindo.kmkpen.model.postgreSql.dto.IJurnalProduksiKlaimDTO;
-import id.co.askrindo.kmkpen.model.postgreSql.dto.IRincianJurnalProduksiIjpDTO;
 import id.co.askrindo.kmkpen.repository.IGenericRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -35,7 +33,7 @@ public interface IJurnalProduksiKlaimRepository extends IGenericRepository<Jurna
             "    inner join m_cabang cabang_ask on penjaminan.kode_cabang_askrindo = cabang_ask.kode_cabang\n" +
             "    and cabang_ask.group_id = 2\n" +
             "WHERE\n" +
-            "    klaim.kode_status = 3  AND klaim.tgl_persetujuan_klaim between :tglPremiAwal AND :tglPremiAkhir \n" +
+            "    klaim.kode_status = 3  AND klaim.tgl_persetujuan_klaim between :tglPremiAwal AND :tglPremiAkhir AND klaim.id_jurnal_produksi_klaim IS NULL \n" +
             "ORDER BY\n" +
             "    cabang_ask.id_cabang, bank.kode_bank", nativeQuery = true)
     public List<IJurnalProduksiKlaimDTO> getRincianJurnalProduksiIjpListFromRincian(@Param("bulan") int bulan, @Param("tahun") int tahun, @Param("tglPremiAwal") Date tglPremiAwal, @Param("tglPremiAkhir") Date tglPremiAkhir);

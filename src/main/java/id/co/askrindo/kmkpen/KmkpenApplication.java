@@ -9,5 +9,4 @@ public class KmkpenApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KmkpenApplication.class, args);
 	}
-
 }

@@ -58,7 +58,7 @@ public class Constants {
         final static public Double PIUTANG_PREMI_PEN = 11091D;
         final static public Double PREMI_PEN = 11164D;
         final static public Double BEBAN_LOSS_RASIO_PEN = 11238D;
-        final static public Double UTANG_LOSS_RASIO_PEN = 11238D;
+        final static public Double UTANG_LOSS_RASIO_PEN = 11231D;
         final static public Double KLAIM_PEN = 11324D;
         final static public Double UTANG_KLAIM_PEN = 11121D;
     }

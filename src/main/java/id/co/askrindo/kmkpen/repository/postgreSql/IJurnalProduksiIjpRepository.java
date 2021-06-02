@@ -52,7 +52,7 @@ public interface IJurnalProduksiIjpRepository extends IGenericRepository<JurnalP
             "    inner join m_cabang cabang_ask on penjaminan.kode_cabang_askrindo = cabang_ask.kode_cabang " +
             "    and cabang_ask.group_id = 2 " +
             "WHERE " +
-            "    penjaminan.status_penjaminan_id = 3  AND ijp.tgl_premi between :tglPremiAwal AND :tglPremiAkhir " +
+            "    penjaminan.status_penjaminan_id = 3  AND ijp.tgl_premi between :tglPremiAwal AND :tglPremiAkhir AND ijp.id_jurnal_produksi_ijp IS NULL " +
             "ORDER BY " +
             "    cabang_ask.id_cabang, bank.kode_bank, ijp.is_koreksi", nativeQuery = true)
     public List<IRincianJurnalProduksiIjpDTO> getRincianJurnalProduksiIjpListFromRincian(@Param("bulan") int bulan, @Param("tahun") int tahun, @Param("tglPremiAwal") Date tglPremiAwal, @Param("tglPremiAkhir") Date tglPremiAkhir);

@@ -55,11 +55,11 @@ public class TransaksiMasterServiceImpl extends GenericSybaseSqlServiceImpl<Tran
         StringBuffer keteranganSB = new StringBuffer();
 
         //private Double userId;
-        transaksiMaster.setUserId(13D); //Ini dummy sementara harus dirubah
-        transaksiMaster.setTanggalEntri(tglJurnal);
+        transaksiMaster.setUserId(693D); //693 = System
+        transaksiMaster.setTanggalEntri(new Date());
         transaksiMaster.setBulan(BigDecimal.valueOf(jurnalProduksiIjpDTO.getBulan()));
         transaksiMaster.setTahun(BigDecimal.valueOf(jurnalProduksiIjpDTO.getTahun()));
-        transaksiMaster.setJumlah(jurnalProduksiIjpDTO.getNilaiIjp().add(jurnalProduksiIjpDTO.getNilaiCadangan()));
+        transaksiMaster.setJumlah(jurnalProduksiIjpDTO.getNilaiIjp().abs().add(jurnalProduksiIjpDTO.getNilaiCadangan().abs()));
         transaksiMaster.setsUnit(transaksiMasterRepository.getUnitId(jurnalProduksiIjpDTO.getKodeCabang()));
         transaksiMaster.setSbuInduk(jurnalProduksiIjpDTO.getKodeCabang());
         transaksiMaster.setIdSbuPusat("KP");
@@ -75,7 +75,7 @@ public class TransaksiMasterServiceImpl extends GenericSybaseSqlServiceImpl<Tran
 
         keteranganSB.append("IJP PEN dan Beban Loss Rasio bulan ")
                 .append(Constants.getNamaBulanMap().get(jurnalProduksiIjpDTO.getBulan()))
-                .append(" ").append(jurnalProduksiIjpDTO.getNamaBank());
+                .append(" ").append(jurnalProduksiIjpDTO.getTahun()).append(" ").append(jurnalProduksiIjpDTO.getNamaBank());
 
         transaksiMaster.setKeterangan(keteranganSB.toString());
 
@@ -96,8 +96,8 @@ public class TransaksiMasterServiceImpl extends GenericSybaseSqlServiceImpl<Tran
         StringBuffer keteranganSB = new StringBuffer();
 
         //private Double userId;
-        transaksiMaster.setUserId(13D); //Ini dummy sementara harus dirubah
-        transaksiMaster.setTanggalEntri(tglJurnal);
+        transaksiMaster.setUserId(693D); //693 = System
+        transaksiMaster.setTanggalEntri(new Date());
         transaksiMaster.setBulan(BigDecimal.valueOf(jurnalProduksiKlaimDTO.getBulan()));
         transaksiMaster.setTahun(BigDecimal.valueOf(jurnalProduksiKlaimDTO.getTahun()));
         transaksiMaster.setJumlah(jurnalProduksiKlaimDTO.getNilaiKlaim());
@@ -116,7 +116,7 @@ public class TransaksiMasterServiceImpl extends GenericSybaseSqlServiceImpl<Tran
 
         keteranganSB.append("Produksi Klaim PEN bulan ")
                 .append(Constants.getNamaBulanMap().get(jurnalProduksiKlaimDTO.getBulan()))
-                .append(" ").append(jurnalProduksiKlaimDTO.getNamaBank());
+                .append(" ").append(jurnalProduksiKlaimDTO.getTahun()).append(" ").append(jurnalProduksiKlaimDTO.getNamaBank());
 
         transaksiMaster.setKeterangan(keteranganSB.toString());
 
